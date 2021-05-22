@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Major CineTex</h1>
+    <hr />
+    <h2>จองตั๋วหนัง</h2>
+    เรื่อง:
+    <select id="movie-name">
+      <option value="">Select Movie</option>
+      <option value="ter">Terminator</option>
+      <option value="ant">Antman</option></select
+    ><br /><br />
+    ที่นั่ง: <input id="seats" type="number" value="0" />
+    <button onclick="bookTicketOfMovie()">จองที่นั่ง</button>
+    <hr />
+    <h3>
+      ราคารวม:
+      <div id="finalPrices"></div>
+    </h3>
+    <script>
+      function bookTicketOfMovie() {
+        const movieName = document.getElementById("movie-name").value;
+        const seats = document.getElementById("seats").value;
+        console.log(movieName);
+        console.log(seats);
+        const data = {
+          movieName: movieName,
+          seats: seats,
+        };
+        console.log(data);
+        fetch("http://localhost:3000/book", {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log("Success:", data);
+            console.log(data.finalPrices);
+            document.getElementById("finalPrices").innerHTML = data.finalPrices;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
