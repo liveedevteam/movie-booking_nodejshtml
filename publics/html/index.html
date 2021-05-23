@@ -4,53 +4,81 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
     <title>Document</title>
+    <link rel="stylesheet" href="../css/movie.css" />
   </head>
   <body>
-    <h1>Major CineTex</h1>
-    <hr />
-    <h2>จองตั๋วหนัง</h2>
-    เรื่อง:
-    <select id="movie-name">
-      <option value="">Select Movie</option>
-      <option value="ter">Terminator</option>
-      <option value="ant">Antman</option></select
-    ><br /><br />
-    ที่นั่ง: <input id="seats" type="number" value="0" />
-    <button onclick="bookTicketOfMovie()">จองที่นั่ง</button>
-    <hr />
-    <h3>
-      ราคารวม:
-      <div id="finalPrices"></div>
-    </h3>
+    <div class="container-fluid">
+      <h1 class="title">Major CineTex</h1>
+      <hr />
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-xl-2">
+            <img
+              class="img-fluid"
+              src="https://lh3.googleusercontent.com/ZS1UgZiA4weiIMN4my2qOLUzNKuFlz7U49Q3kOHyigrepdkdA6f9qIilbqMS8pDb--bSQrRSS1f4nvjYJPRIugHhP7PmlmSnhQ=w260"
+            />
+          </div>
+          <div class=" col-lg-4 col-xl-2">
+            <img
+              class="img-fluid"
+              src="https://lh3.googleusercontent.com/Lq-IoD4k9CWcaPSNdrIK4qOpU1QfHD80DwiDT8sBX39XGMR_FbmVXEg1NCJjpMZgjjNvXjNWbOaUq_hlY2_GjOJbgLp6S6PW=w260"
+            />
+          </div>
+          <div class=" col-lg-4 col-xl-2">
+            <img
+              class="img-fluid"
+              src="https://lh3.googleusercontent.com/lVijQWZt8LRk7lk5lg9I5Y1_n4IzB_BjQrCp5CEeyyaw3kM0r_vbJjvwlfYm-B9X6ni1f8S4q_DaPK-Fgi3Fs7HcXbBCTm_W4c8=w260"
+            />
+          </div>
+          <div class=" col-lg-4 col-xl-2">
+            <img
+              class="img-fluid"
+              src="https://lh3.googleusercontent.com/lVijQWZt8LRk7lk5lg9I5Y1_n4IzB_BjQrCp5CEeyyaw3kM0r_vbJjvwlfYm-B9X6ni1f8S4q_DaPK-Fgi3Fs7HcXbBCTm_W4c8=w260"
+            />
+          </div>
+          <div class=" col-lg-4 col-xl-2">
+            <img
+              class="img-fluid"
+              src="https://lh3.googleusercontent.com/lVijQWZt8LRk7lk5lg9I5Y1_n4IzB_BjQrCp5CEeyyaw3kM0r_vbJjvwlfYm-B9X6ni1f8S4q_DaPK-Fgi3Fs7HcXbBCTm_W4c8=w260"
+            />
+          </div>
+          <div class=" col-lg-4 col-xl-2">
+            <img
+              class="img-fluid"
+              src="https://lh3.googleusercontent.com/lVijQWZt8LRk7lk5lg9I5Y1_n4IzB_BjQrCp5CEeyyaw3kM0r_vbJjvwlfYm-B9X6ni1f8S4q_DaPK-Fgi3Fs7HcXbBCTm_W4c8=w260"
+            />
+          </div>
+        </div>
+      </div>
+      <h2>จองตั๋วหนัง</h2>
+      เรื่อง:
+      <select id="movie-name">
+        <option value="">Select Movie</option>
+        <option value="ter">Terminator</option>
+        <option value="ant">Antman</option></select
+      ><br /><br />
+      ที่นั่ง: <input id="seats" type="number" value="0" />
+      <button onclick="bookTicketOfMovie()">จองที่นั่ง</button>
+      <hr />
+      <h3>
+        ราคารวม:
+        <div id="finalPrices"></div>
+      </h3>
+    </div>
     <script>
-      function bookTicketOfMovie() {
-        const movieName = document.getElementById("movie-name").value;
-        const seats = document.getElementById("seats").value;
-        console.log(movieName);
-        console.log(seats);
-        const data = {
-          movieName: movieName,
-          seats: seats,
-        };
-        console.log(data);
-        fetch("http://localhost:3000/book", {
-          method: "POST", // or 'PUT'
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // console.log("Success:", data);
-            console.log(data.finalPrices);
-            document.getElementById("finalPrices").innerHTML = data.finalPrices;
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-      }
+      src = "../js/book.js";
     </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
