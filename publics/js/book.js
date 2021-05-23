@@ -8,9 +8,18 @@ function bookTicketOfMovie() {
         seats: seats,
     };
     console.log(data);
-    fetch("http://localhost:3000/book", {
+    const url = window.location.hostname
+    // console.log(url)
+    // console.log(`${url}/book`)
+    let apiURL = ""
+    if (url === 'localhost') {
+        apiURL = `http://${url}:3000/book`
+    } else {
+        apiURL = `https://${url}/book`
+    }
+    fetch(`http://${url}:3000/book`, {
         method: "POST", // or 'PUT'
-        headers: {
+            headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
