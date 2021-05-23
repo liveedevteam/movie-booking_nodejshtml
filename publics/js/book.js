@@ -17,9 +17,9 @@ function bookTicketOfMovie() {
     } else {
         apiURL = `https://${url}/book`
     }
-    fetch(`http://${url}:3000/book`, {
+    fetch(apiURL, {
         method: "POST", // or 'PUT'
-            headers: {
+        headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
