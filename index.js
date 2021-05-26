@@ -1,8 +1,11 @@
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
-const port = 3000
+const port = 3001
+
+app.use(cors())
 
 app.use('/static', express.static('publics'))
 app.use('/in', express.static(path.join(__dirname, 'web-server/html/public')))
@@ -36,7 +39,7 @@ app.post('/book', function (req, res) {
         }
     })
     const finalPrices = prices * seats
-    res.json({
+    res.status(200).json({
         isSuccess: true,
         finalPrices: finalPrices
     })
